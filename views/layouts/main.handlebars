@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Internship Online</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    {{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">
+          {{msg}}
+        </div>
+      {{/each}}
+    {{/if}}
+    {{{body}}}
+  </body>
+  <br>
+  <footer>
+    <div>
+      <h1>Copyright &copy; 2019, Internship Online</h1>
+    </div>
+  </footer>
+</html>

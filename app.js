@@ -24,6 +24,7 @@ const port = 3000;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'})); // means that all view layouts gonna have the same layout 'main'
 app.set('view engine', 'handlebars');
+//app.set('views',path.join(__dirname, 'views'));
 
 // body parser middleware
 
@@ -69,7 +70,7 @@ app.use('/users', users);
 // calling the port
 
 app.listen(port, () => {
-  console.log('server is running on port'+port);
+  console.log('server is running on port '+port);
 });
 
 module.exports = router;
