@@ -10,12 +10,10 @@ const mongoose = require('mongoose');
 
 //creating routes
 const index = require('./routes/index');
-const users = require('./routes/users');
 
 //init our app
 
 const app = express();
-
 const router = express.Router();
 //port
 const port = 3000;
@@ -32,6 +30,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended : false
 }));
+
+// Init passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 // express session
 
 app.use(session({
@@ -41,9 +44,10 @@ app.use(session({
 }));
 // express messages
 
-app.use(require('connect-flash')());
+app.use(flash());
 app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
   next();
 });
 
@@ -65,7 +69,7 @@ app.use(expressValidator({
   }
 }));
 app.use('/', index);
-app.use('/users', users);
+
 
 // calling the port
 
