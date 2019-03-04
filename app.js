@@ -34,7 +34,6 @@ app.use(bodyParser.urlencoded({
 // Init passport
 app.use(passport.initialize());
 app.use(passport.session());
-
 // express session
 
 app.use(session({
@@ -42,12 +41,16 @@ app.use(session({
   resave : false,
   saveUninitialized : true
 }));
+
+
 // express messages
 
 app.use(flash());
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
   next();
 });
 

@@ -1,10 +1,12 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 // import the module
 
 let User = require('../models/user');
-// home page - login page -
+// home page -
+
 router.get('/', (req, res, next) => {
   res.render('index');
 });
@@ -54,7 +56,46 @@ router.post('/register', (req, res, next) => {
       console.log('succed');
     });
   }
+});
 
+// local Strategy
+
+passport.use(new LocalStrategy((username, password, done) => {
+  User.getUserByUsername(username, (err, user) => {
+    if(err) throw err;
+    if(!user){
+      return done(null, false, {message: 'User Not Found'});
+    }
+    User.comparePassword(password, user.password, (err, isMatch) => {
+      if(err) throw err;
+      if(isMatch){
+        return done(null, user);
+      } else{
+        return done(null, false, {message: 'wrong Password'});
+      }
+    });
+  });
+}));
+//serialise
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+// deserialise
+
+passport.deserializeUser((id, done) => {
+  User.getUserById(id, (err, user) => {
+    done(err, user);
+  });
+});
+
+// login process - post method
+router.post('/login', (req, res, next) => {
+  passport.autheticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  })(req, res, next);
 });
 
 module.exports = router;
