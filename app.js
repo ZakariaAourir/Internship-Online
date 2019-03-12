@@ -6,6 +6,7 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 
 //creating routes
@@ -14,7 +15,7 @@ const index = require('./routes/index');
 //init our app
 
 const app = express();
-const router = express.Router();
+
 //port
 const port = 3000;
 
@@ -22,7 +23,9 @@ const port = 3000;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'})); // means that all view layouts gonna have the same layout 'main'
 app.set('view engine', 'handlebars');
-//app.set('views',path.join(__dirname, 'views'));
+// Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // body parser middleware
 
@@ -71,6 +74,7 @@ app.use(expressValidator({
     };
   }
 }));
+
 app.use('/', index);
 
 
@@ -79,5 +83,3 @@ app.use('/', index);
 app.listen(port, () => {
   console.log('server is running on port '+port);
 });
-
-module.exports = router;

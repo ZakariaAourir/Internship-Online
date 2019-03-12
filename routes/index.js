@@ -5,9 +5,9 @@ const LocalStrategy = require('passport-local').Strategy;
 // import the module
 
 let User = require('../models/user');
-// home page -
+// home page - dashbord
 
-router.get('/', (req, res, next) => {
+router.get('/', ensureAuthenticated, (req, res, next) => {
   res.render('index');
 });
 
@@ -19,6 +19,13 @@ router.get('/register', (req, res, next) => {
 router.get('/login', (req, res, next) => {
   res.render('login');
 });
+// logout -
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  req.flash('success_msg', 'you are logged out');
+  res.redirect('/login');
+});
+
 
 // regist - post method
 router.post('/register', (req, res, next) => {
@@ -41,7 +48,7 @@ router.post('/register', (req, res, next) => {
     res.render('register', {
       errors: errors
     });
-  }else {
+  } else {
     const newUser = new User({
       name: name,
       username: username,
@@ -51,7 +58,7 @@ router.post('/register', (req, res, next) => {
 
     User.registerUser(newUser, (err, user) => {
       if(err) throw err;
-      req.flash('success_msg', 'You are registered and you can login')
+      req.flash('success_msg', 'You are registered and you can login');
       res.redirect('/login');
       console.log('succed');
     });
@@ -67,15 +74,17 @@ passport.use(new LocalStrategy((username, password, done) => {
       return done(null, false, {message: 'User Not Found'});
     }
     User.comparePassword(password, user.password, (err, isMatch) => {
-      if(err) throw err;
-      if(isMatch){
+      if (err) throw err;
+      if (isMatch) {
         return done(null, user);
-      } else{
+      } else {
         return done(null, false, {message: 'wrong Password'});
       }
     });
   });
 }));
+
+
 //serialise
 
 passport.serializeUser((user, done) => {
@@ -91,11 +100,21 @@ passport.deserializeUser((id, done) => {
 
 // login process - post method
 router.post('/login', (req, res, next) => {
-  passport.autheticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
+  passport.authenticate('local', {
+    successRedirect:'/',
+    failureRedirect:'/login',
+    failureFlash:true
   })(req, res, next);
 });
+
+// acces controle
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated())
+    return next();
+  else
+    res.redirect('/login');
+}
+
+
 
 module.exports = router;

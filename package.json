@@ -10,17 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "*",
+    "bcryptjs": "*",
     "body-parser": "*",
+    "connect-flash": "*",
+    "cors": "^2.8.5",
+    "express": "*",
     "express-handlebars": "*",
-    "express-validator": "*",
     "express-messages": "*",
     "express-session": "*",
-    "connect-flash": "*",
+    "express-validator": "*",
     "mongoose": "*",
-    "passport": "*",
+    "passport": "^0.4.0",
     "passport-http": "*",
-    "passport-local": "*",
-    "bcryptjs": "*"
+    "passport-local": "*"
   }
 }
