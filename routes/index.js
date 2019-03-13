@@ -11,6 +11,8 @@ router.get('/', isLoggedIn, (req, res, next) => {
   res.render('index');
 });
 
+
+
 router.get('/register', (req, res, next) => {
   res.render('register');
 });
@@ -109,7 +111,8 @@ router.post('/login', (req, res, next) => {
 });
 
 // acces controle
-function isLoggedIn(req, res, next){
+function isLoggedIn(req, res, next) {
+  console.log(req.isAuthenticated());
   if(req.isAuthenticated()){
     return next();
   } else{

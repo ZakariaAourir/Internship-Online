@@ -12,8 +12,8 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
-    "cookie-parser": "*",
     "connect-flash": "*",
+    "cookie-parser": "*",
     "cors": "^2.8.5",
     "express": "*",
     "express-handlebars": "*",
@@ -21,6 +21,7 @@
     "express-session": "*",
     "express-validator": "*",
     "mongoose": "*",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-http": "*",
     "passport-local": "*"
