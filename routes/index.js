@@ -109,7 +109,7 @@ router.post('/login', (req, res, next) => {
 });
 
 // acces controle
-function isLoggedIn(req, res, next) {
+function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
     return next();
   } else{
@@ -117,6 +117,5 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
   }
 }
-
 
 module.exports = router;
