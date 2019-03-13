@@ -12,6 +12,7 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
+    "cookie-parser": "*",
     "connect-flash": "*",
     "cors": "^2.8.5",
     "express": "*",

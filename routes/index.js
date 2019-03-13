@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-// import the module
+  // import the module
 
 let User = require('../models/user');
-// home page - dashbord
+// home page
 
-router.get('/', ensureAuthenticated, (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
   res.render('index');
 });
 
@@ -105,16 +105,18 @@ router.post('/login', (req, res, next) => {
     failureRedirect:'/login',
     failureFlash:true
   })(req, res, next);
+  console.log('you r logged in');
 });
 
 // acces controle
-function ensureAuthenticated(req, res, next){
-  if(req.isAuthenticated())
+function isLoggedIn(req, res, next) {
+  if(req.isAuthenticated()){
     return next();
-  else
+  } else{
+    req.flash('error_msg', 'you are not autorized');
     res.redirect('/login');
+  }
 }
-
 
 
 module.exports = router;

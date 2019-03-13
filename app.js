@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
@@ -28,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // body parser middleware
-
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended : false
