@@ -110,6 +110,7 @@ router.post('/login', (req, res, next) => {
 
 // acces controle
 function isLoggedIn(req, res, next) {
+  console.log(req.isAuthenticated());
   if(req.isAuthenticated()){
     return next();
   } else{

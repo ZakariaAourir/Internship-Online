@@ -21,6 +21,16 @@ const app = express();
 const port = 3000;
 
 //view
+app.use(session({
+  secret : 'secret',
+  resave : false,
+  saveUninitialized : true
+}));
+// Init passport
+app.use(passport.initialize());
+app.use(passport.session());
+// express session
+
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'})); // means that all view layouts gonna have the same layout 'main'
 app.set('view engine', 'handlebars');
@@ -35,16 +45,8 @@ app.use(bodyParser.urlencoded({
   extended : false
 }));
 
-// Init passport
-app.use(passport.initialize());
-app.use(passport.session());
-// express session
 
-app.use(session({
-  secret : 'secret',
-  resave : false,
-  saveUninitialized : true
-}));
+
 
 
 // express messages

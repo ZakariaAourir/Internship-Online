@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/passportapp', { useNewUrlParser: true });
+mongoose.connect('mongodb://dev:aqwzs12**@ds241121.mlab.com:41121/zak-login-project', { useNewUrlParser: true });
 const bcrypt = require('bcryptjs');
 
 // user shcema
