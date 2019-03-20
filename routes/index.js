@@ -11,7 +11,10 @@ router.get('/', isLoggedIn, (req, res, next) => {
   res.render('index');
 });
 
-
+// client side
+router.get('/homepage', (req, res, next) => {
+  res.render('homepage');
+});
 
 router.get('/register', (req, res, next) => {
   res.render('register');
@@ -116,9 +119,9 @@ function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()){
     return next();
   } else{
-    req.flash('error_msg', 'you are not autorized');
-    res.redirect('/login');
+    res.redirect('/homepage');
   }
+  req.flash('error_msg', 'you are not autorized');
 }
 
 module.exports = router;
