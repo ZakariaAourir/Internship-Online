@@ -17,9 +17,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto navbar-left">
+            {{#if user}}
             <li class="nav-item">
               <a class="nav-link" href="/homepage">Home <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Offers <span class="sr-only">(current)</span></a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/homepage">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {{/if}}
           </ul>
           <ul class="navbar-nav navbar-right">
             {{#if user}}
