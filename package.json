@@ -24,6 +24,8 @@
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "nodemailer": "*",
+    "nodemailer-smtp-transport": "*"
   }
 }
