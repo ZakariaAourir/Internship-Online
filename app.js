@@ -46,10 +46,6 @@ app.use(bodyParser.urlencoded({
   extended : false
 }));
 
-
-
-
-
 // express messages
 
 app.use(flash());

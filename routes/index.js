@@ -131,7 +131,7 @@ router.post('/send',function(req,res,next){
     service: "Gmail",
     auth: {
       user: "zakaria1997aourir@gmail.com",
-      pass: "zakaria1234567"
+      pass: ""
     }
   });
 
