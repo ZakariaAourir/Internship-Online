@@ -1,0 +1,90 @@
+
+
+#search .bucket{
+  float:left;
+  margin-right:20px;
+  width:400px;
+}
+
+#search .positions .description, #search .positions .location{
+  width:326px;
+}
+#search .fulltime{
+  width:auto;
+}
+
+#search h3{
+  margin:0;
+  font-size:12px;
+  color:#444;
+}
+
+#search .field{
+  position:relative;
+  padding:2px;
+  background:rgba(0, 0, 0, 0.06);
+}
+#search .field input{
+  width:384px;
+  padding:7px 5px;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:12px;
+  border:1px solid #ccc;
+  background:#fff;
+  -webkit-appearance:none;
+  -webkit-border-radius:0;
+}
+#search .positions .field input{
+  width:310px;
+}
+#search .field .placeholder{
+  position:absolute;
+  margin:0;
+  top:8px;
+  left:9px;
+  color:#aaa;
+  font-size:12px;
+  line-height:1.5;
+  font-weight:normal;
+}
+
+#search .location .field .placeholder{
+  padding-left:20px;
+  /* Sprite */
+}
+#search .description .field .placeholder{
+  padding-left:20px;
+  /* Sprite */
+}
+
+#search .simplefield{
+  display:block;
+  margin:0;
+  padding:26px 0 0 0;
+  font-size:12px;
+  color:#444;
+}
+#search .simplefield input[type=checkbox]{
+  margin-right:5px;
+}
+
+#search button{
+  float:left;
+  margin-top:18px;
+  height:32px;
+  padding:0 20px;
+  line-height:32px;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:12px;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:-1px -1px 0 rgba(0, 0, 0, 0.3);
+  background:#869ca9;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a2b8c5', endColorstr='#869ca9');
+  background:-moz-linear-gradient(top,  #a2b8c5,  #869ca9);
+  border:none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor:pointer;
+}

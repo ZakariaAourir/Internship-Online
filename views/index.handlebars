@@ -1,1 +1,42 @@
-INDEX
+<html>
+  <head>
+    <link rel="stylesheet" media="all" href="/css/style.css" />
+  </head>
+  <body>
+<div id="search" class="clearfix">
+
+	<form class="positions" action="/positions" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+
+		<div class="bucket description">
+			<h3>Job Description</h3>
+
+			<div class="field">
+        <input type="text" name="description" id="description_field" placeholder="Filter by title, benefits, companies, expertise" autocomplete="off" />
+			</div>
+		</div>
+
+		<div class="bucket location">
+			<h3>Location</h3>
+
+			<div class="field">
+        <input type="text" name="location" id="location_field" placeholder="Filter by city, state, zip code or country" autocomplete="off" />
+			</div>
+		</div>
+
+		<div class="bucket fulltime">
+			<label class="simplefield">
+        <input type="checkbox" name="full_time" id="full_time_field" value="on" />
+				Full Time Only
+			</label>
+		</div>
+
+		<button type="submit">Search</button>
+
+</form>
+
+</div>
+<div class="json">
+  {{json}}
+</div>
+</body>
+</html>

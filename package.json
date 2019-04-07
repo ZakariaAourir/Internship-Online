@@ -21,11 +21,12 @@
     "express-session": "*",
     "express-validator": "*",
     "mongoose": "*",
+    "node-fetch": "^2.3.0",
+    "nodemailer": "*",
+    "nodemailer-smtp-transport": "*",
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-http": "*",
-    "passport-local": "*",
-    "nodemailer": "*",
-    "nodemailer-smtp-transport": "*"
+    "passport-local": "*"
   }
 }

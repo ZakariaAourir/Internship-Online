@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const fetch=require('node-fetch');
 const LocalStrategy = require('passport-local').Strategy;
 const nodemailer = require('nodemailer');
   // import the module
@@ -9,7 +10,11 @@ let User = require('../models/user');
 // home page
 
 router.get('/', isLoggedIn, (req, res, next) => {
-  res.render('index');
+const url='https://jobs.github.com/positions.json?description=python&location=new+york';
+
+fetch(url)
+  .then((data) => data.json()).then(json => res.render('index',{json:json}))
+  .catch(function(error) {console.log(error)});
 });
 
 // client side
