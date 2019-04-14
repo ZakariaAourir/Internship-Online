@@ -9,12 +9,19 @@ const nodemailer = require('nodemailer');
 let User = require('../models/user');
 // home page
 
-router.get('/', isLoggedIn, (req, res, next) => {
-const url='https://jobs.github.com/positions.json?description=python&location=new+york';
+router.get('/', isLoggedIn,(req, res, next) => {
+     res.render('index')});
+
+router.post('/index', isLoggedIn,(req, res, next) => {
+  const description = req.body.description;
+  const location = req.body.location;
+  const url='https://jobs.github.com/positions.json?description=' +description+ '&location=' +location;
 
 fetch(url)
-  .then((data) => data.json()).then(json => res.render('index',{json:json}))
+  .then( response => response.json())
+  .then(data => res.render('index',{show_data : data}))
   .catch(function(error) {console.log(error)});
+
 });
 
 // client side

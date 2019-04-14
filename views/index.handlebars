@@ -1,13 +1,11 @@
-<html>
-  <head>
-    <link rel="stylesheet" media="all" href="/css/style.css" />
-  </head>
-  <body>
+<head>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
 <div id="search" class="clearfix">
 
-	<form class="positions" action="/positions" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+	<form class="positions" action="/index" method="post">
 
-		<div class="bucket description">
+  	<div class="bucket description">
 			<h3>Job Description</h3>
 
 			<div class="field">
@@ -35,8 +33,71 @@
 </form>
 
 </div>
-<div class="json">
-  {{json}}
+<div id="page">
+  <div class="inner">
+
+    <h1>Featured Jobs</h1>
+
+    <div class="columns generic">
+      <div class="column main">
+        <section>
+          <table class="positionlist">
+         	  <tbody>
+            {{#each show_data}}
+			        <tr class="job">
+			        	<td class="title">
+					       <h4><a href="https://linktothisoffer">{{this.title}}</a></h4>
+					       <p class="source">
+						     <a class="company" href="https://linktothiscompany">{{this.company}}</a>
+						–
+                 <strong class="type">{{this.type}}</strong></p>
+				        </td>
+
+				        <td class="meta">
+                 <span class="location">{{this.location}}</span>
+                 <span class="when relatize relatized">{{this.created_at}}</span>
+				        </td>
+			         </tr>
+            {{/each}}
+					</tbody>
+				</table>
+      </section>
+      <h1>Hot Searches</h1>
+
+        <div class="hot-searches">
+
+            <a href="/positions?description=PHP">PHP</a>
+             ·
+            <a href="/positions?description=Rails">Rails</a>
+             ·
+            <a href="/positions?description=Python">Python</a>
+             ·
+            <a href="/positions?description=JavaScript">JavaScript</a>
+             ·
+            <a href="/positions?description=Scala">Scala</a>
+             ·
+            <a href="/positions?description=Android">Android</a>
+             ·
+            <a href="/positions?description=iOS">iOS</a>
+             ·
+            <a href="/positions?description=Linux">Linux</a>
+             ·
+            <a href="/positions?description=Erlang">Erlang</a>
+        </div>
+
+        <div class="hot-searches">
+
+            <a href="/positions?location=San+Francisco">San Francisco</a>
+             ·
+            <a href="/positions?location=New+York+City">New York City</a>
+             ·
+            <a href="/positions?location=Austin%2C+TX">Austin, TX</a>
+             ·
+            <a href="/positions?location=London">London</a>
+             ·
+            <a href="/positions?location=Europe">Europe</a>
+        </div>
+      </div>
+	  </div>
+  </div>
 </div>
-</body>
-</html>
