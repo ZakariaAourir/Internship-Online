@@ -33,22 +33,33 @@
 </form>
 
 </div>
-<div id="page">
+{{#if show_data}}
+<div id="page"
+style="background-color:#f5f4f7 ;
+border: 1;
+box-shadow: inset 0 9px 9px -3px #dadada;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+">
   <div class="inner">
 
-    <h1><span>Featured Jobs</span></h1>
-
+    <h1><b>Featured Jobs</b></h1>
     <div class="columns generic">
       <div class="column main">
+
         <section>
+
           <table class="positionlist">
          	  <tbody>
             {{#each show_data}}
 			        <tr class="job">
 			        	<td class="title">
-					       <h4><a href="https://linktothisoffer">{{this.title}}</a></h4>
+					       <h4><a href="/index/{{this.id}}">{{this.title}}</a></h4>
 					       <p class="source">
-						     <a class="company" href="https://linktothiscompany">{{this.company}}</a>
+						     <a class="company" href="{{company_url}}">{{this.company}}</a>
 						–
                  <strong class="type">{{this.type}}</strong></p>
 				        </td>
@@ -58,11 +69,12 @@
                  <span class="when relatize relatized">{{this.created_at}}</span>
 				        </td>
 			         </tr>
-            {{/each}}
-					</tbody>
-				</table>
-      </section>
-      <h1><span>Hot Searches</span></h1>
+             {{/each}}
+				     </tbody>
+		  	   </table>
+        </section>
+
+      <h1><b>Hot Searches</b></h1>
 
         <div class="hot-searches">
 
@@ -96,5 +108,52 @@
         </div>
       </div>
 	  </div>
+
   </div>
 </div>
+{{/if}}
+{{#if show_IDdata}}
+
+  <div id="page"
+	style="background-color:#f5f4f7 ;
+	border: 1;
+	box-shadow: inset 0 9px 9px -3px #dadada;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	"">
+   <div class="inner">
+     <p class="supertitle"> {{show_IDdata.type}} / {{show_IDdata.location}}</p>
+	      <h1>{{show_IDdata.title}}</h1>
+
+         <div class="columns generic">
+		      <div class="column main">{{{show_IDdata.description}}}</div>
+				   <div class="column sidebar">
+						<div class="module logo">
+								 <div class="inner">
+										<h2><b>{{show_IDdata.company}}</b></h2>
+										<div class="logo">
+											 <a target="_blank" href="{{show_IDdata.company_url}}">
+													<img src="{{show_IDdata.company_logo}}" />
+											 </a>
+										</div>
+										<p class="url">
+												 <a target="_blank" href="{{show_IDdata.scompany_url}}">{{show_IDdata.company_url}}</a>
+										</p>
+								 </div>
+					</div>
+
+
+				 <div class="module highlighted">
+					 <div class="inner">
+						  <h2><b>how to apply</b></h2>
+							{{{show_IDdata.how_to_apply}}}
+					 </div>
+				 </div>
+
+		 </div>
+ </div>
+
+{{/if}}

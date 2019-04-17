@@ -30,6 +30,13 @@ fetch(url)
   .then(data => res.render('index',{show_data : data}))
   .catch(function(error) {console.log(error)});
 });
+router.get('/index/:id', isLoggedIn,(req, res, next) => {
+  const url='https://jobs.github.com/positions/'+req.params.id+'.json';
+fetch(url)
+  .then( response => response.json())
+  .then(body => res.render('index',{show_IDdata : body}))
+  .catch(function(error) {console.log(error)});
+});
 
 
 
