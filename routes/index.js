@@ -19,10 +19,19 @@ router.post('/index', isLoggedIn,(req, res, next) => {
 
 fetch(url)
   .then( response => response.json())
+  .then( data => res.render('index',{show_data : data}))
+  .catch(function(error) {console.log(error)});
+})
+
+router.get('/index', isLoggedIn,(req, res, next) => {
+  const url='https://jobs.github.com/positions.json?description='+req.query.description;
+fetch(url)
+  .then( response => response.json())
   .then(data => res.render('index',{show_data : data}))
   .catch(function(error) {console.log(error)});
-
 });
+
+
 
 // client side
 router.get('/homepage', (req, res, next) => {
