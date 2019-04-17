@@ -140,11 +140,13 @@ function isLoggedIn(req, res, next) {
 // nodemailer - post -
 router.post('/send',function(req,res,next){
   var transporter  = nodemailer.createTransport({
-    service: "Gmail",
+    host: "smtp.ethereal.email",
+    port: 587,
     auth: {
       user: "zakaria1997aourir@gmail.com",
-      pass: ""
-    }
+      pass: "zakaria1234567"
+    },
+    secure: false
   });
 
   var mailOptions = {
