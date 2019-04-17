@@ -24,12 +24,13 @@ fetch(url)
 })
 
 router.get('/index', isLoggedIn,(req, res, next) => {
-  const url='https://jobs.github.com/positions.json?description='+req.query.description;
+  const url='https://jobs.github.com/positions.json?description='+req.query.description+'&location='+req.query.location;
 fetch(url)
   .then( response => response.json())
   .then(data => res.render('index',{show_data : data}))
   .catch(function(error) {console.log(error)});
 });
+
 
 
 
@@ -56,11 +57,11 @@ router.get('/logout', (req, res, next) => {
 
 // regist - post method
 router.post('/register', (req, res, next) => {
-  const name = req.body.name;
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  const password2 = req.body.password2;
+  const name = req.body.name ;
+  const username = req.body.username ;
+  const email = req.body.email ;
+  const password = req.body.password ;
+  const password2 = req.body.password2 ;
 
   req.checkBody('name', 'First Name field is required').notEmpty();
   req.checkBody('email', 'Email field is required').notEmpty();
