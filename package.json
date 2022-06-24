@@ -23,7 +23,7 @@
     "lodash": "^4.17.14",
     "mongodb": "^3.2.3",
     "mongoose": "^5.8.3",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.7",
     "nodemailer": "*",
     "nodemailer-smtp-transport": "*",
     "nodemon": "^1.18.10",
